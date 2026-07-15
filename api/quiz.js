@@ -185,7 +185,9 @@ module.exports = async (req, res) => {
       );
 
       if (!insert.ok) {
-        res.status(502).json({ ok: false, error: 'db_error', status: insert.status });
+        const detail = await insert.text().catch(() => '');
+        console.error('supabase insert failed', insert.status, detail);
+        res.status(502).json({ ok: false, error: 'db_error', status: insert.status, detail: detail.slice(0, 400) });
         return;
       }
 

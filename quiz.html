@@ -758,7 +758,7 @@ async function finalizar() {
     renderResult(r, r.jaRespondeu === true);
   } catch (e) {
     setLoading(btn, false);
-    if (err) err.textContent = 'Não foi possível enviar suas respostas. Tente novamente.';
+    if (err) err.textContent = 'Erro: ' + (e.detail || e.message || 'desconhecido') + (e.status ? ' [' + e.status + ']' : '');
   }
 }
 
@@ -819,7 +819,12 @@ async function api(payload) {
     body: JSON.stringify(payload),
   });
   const data = await resp.json().catch(() => ({}));
-  if (!resp.ok || !data.ok) throw new Error(data.error || 'failed');
+  if (!resp.ok || !data.ok) {
+    const e = new Error(data.error || 'failed');
+    e.detail = data.detail;
+    e.status = data.status;
+    throw e;
+  }
   return data;
 }
 function setLoading(btn, loading, label) {
