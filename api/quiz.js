@@ -86,7 +86,12 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/+$/, '');
+  // Normaliza a URL: tira espaços, barras e um /rest/v1 colado por engano.
+  const SUPABASE_URL = (process.env.SUPABASE_URL || '')
+    .trim()
+    .replace(/\/+$/, '')
+    .replace(/\/rest\/v1\/?$/, '')
+    .replace(/\/+$/, '');
   const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY || '';
   if (!SUPABASE_URL || !SUPABASE_KEY) {
     res.status(500).json({ ok: false, error: 'supabase_not_configured' });
