@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz · Raio-X do Brasil — Ganhe seu cupom de desconto</title>
+<meta name="description" content="Responda 15 perguntas de economia e ganhe um cupom de desconto no curso Raio-X do Brasil.">
+<meta name="theme-color" content="#0a0e1a">
+<meta name="robots" content="noindex">
+
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-dark: #0a0e1a;
+  --bg-darker: #060912;
+  --bg-light: #f5f3ee;
+  --bg-cream: #ebe7dc;
+  --ink: #0a0e1a;
+  --ink-muted: #4a4e5a;
+  --accent: #c8a45c;
+  --accent-dark: #9c7a3a;
+  --accent-soft: #e8d9b8;
+  --line: rgba(255,255,255,0.08);
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg-dark);
+  color: #fff;
+  line-height: 1.6;
+  font-size: 16px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.serif { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.02em; }
+.italic { font-style: italic; }
+
+/* subtle grid + glow background, herdado da hero */
+body::before {
+  content: '';
+  position: fixed;
+  top: -30%; right: -20%;
+  width: 80%; height: 160%;
+  background: radial-gradient(ellipse at center, rgba(200,164,92,0.10) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
+  z-index: 0;
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: relative;
+  z-index: 3;
+  border-bottom: 1px solid var(--line);
+  background: rgba(6,9,18,0.6);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-mark {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logo-mark img { width: 100%; height: 100%; display: block; }
+.logo .tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  padding: 4px 10px;
+  border: 1px solid rgba(200,164,92,0.4);
+  border-radius: 100px;
+  margin-left: 4px;
+}
+@media (max-width: 560px) { .logo .tag { display: none; } }
+
+/* ===== STAGE ===== */
+.stage {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 64px;
+}
+.card {
+  width: 100%;
+  max-width: 640px;
+}
+
+/* progress */
+.progress {
+  margin-bottom: 30px;
+}
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px;
+}
+.progress-meta strong { color: var(--accent); font-weight: 600; }
+.progress-bar {
+  height: 5px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+  transition: width 0.4s ease;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+h1.title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 4.4vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+h1.title .accent { color: var(--accent); font-style: italic; font-weight: 400; }
+.lead {
+  font-size: 16px;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+.lead strong { color: #fff; font-weight: 600; }
+
+.q-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(22px, 3.4vw, 30px);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+}
+
+/* inputs */
+.field {
+  display: flex;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 6px;
+  border-radius: 100px;
+  transition: all 0.25s;
+  margin-bottom: 14px;
+}
+.field:focus-within {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 4px rgba(200,164,92,0.12);
+}
+.field.stacked { border-radius: 16px; }
+.field input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  padding: 13px 18px;
+  min-width: 0;
+}
+.field input::placeholder { color: rgba(255,255,255,0.45); }
+
+/* options */
+.options { display: flex; flex-direction: column; gap: 12px; }
+.option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15.5px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.option:hover {
+  border-color: var(--accent);
+  background: rgba(200,164,92,0.08);
+  transform: translateY(-1px);
+}
+.option.selected {
+  border-color: var(--accent);
+  background: rgba(200,164,92,0.14);
+}
+.option-key {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--accent);
+  transition: all 0.18s ease;
+}
+.option.selected .option-key,
+.option:hover .option-key {
+  background: var(--accent);
+  color: var(--bg-darker);
+  border-color: var(--accent);
+}
+
+/* choice cards (comprou?) */
+.choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.choice {
+  text-align: left;
+  padding: 26px 24px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.choice:hover, .choice.selected {
+  border-color: var(--accent);
+  background: rgba(200,164,92,0.10);
+  transform: translateY(-2px);
+}
+.choice-ico { font-size: 26px; margin-bottom: 12px; }
+.choice h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.choice p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.45; }
+
+/* buttons */
+.actions {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-darker);
+  padding: 15px 30px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  transition: all 0.25s;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px rgba(200,164,92,0.25);
+}
+.btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary svg { width: 14px; height: 14px; }
+.btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 8px 4px;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: #fff; }
+
+.microcopy {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 18px;
+}
+.microcopy span { display: inline-flex; align-items: center; gap: 6px; }
+.microcopy span::before { content: '✓'; color: var(--accent); font-weight: 700; }
+
+.err {
+  color: #e76b6b;
+  font-size: 13.5px;
+  margin-top: 12px;
+  min-height: 18px;
+}
+
+/* result */
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: rgba(200,164,92,0.10);
+  border: 1px solid rgba(200,164,92,0.35);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+.score-ring {
+  font-family: 'Fraunces', serif;
+  font-size: 60px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.score-ring span { font-size: 26px; color: rgba(255,255,255,0.5); }
+
+.coupon {
+  margin: 26px 0 8px;
+  padding: 26px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #c8a45c 0%, #9c7a3a 100%);
+  color: var(--bg-darker);
+  position: relative;
+  overflow: hidden;
+}
+.coupon-label {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+.coupon-code {
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.copy-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: rgba(6,9,18,0.85);
+  color: var(--accent-soft);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.copy-btn:hover { background: #060912; }
+.coupon-note { font-size: 13px; margin-top: 12px; font-weight: 500; opacity: 0.85; }
+
+.result-card {
+  margin: 24px 0;
+  padding: 22px 24px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+.result-card h3 { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; margin-bottom: 6px; }
+.result-card p { font-size: 14px; color: rgba(255,255,255,0.68); }
+
+.screen { animation: fade 0.35s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.hidden { display: none !important; }
+
+footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 560px) {
+  .choice-grid { grid-template-columns: 1fr; }
+  .stage { padding: 28px 18px 48px; }
+  .coupon-code { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><img src="logo.svg" alt="Rascunhos Econômicos"></span>
+      Raio-X<span class="tag">Quiz</span>
+    </a>
+  </div>
+</nav>
+
+<main class="stage">
+  <div class="card" id="card">
+    <!-- as telas são injetadas aqui via JS -->
+  </div>
+</main>
+
+<footer>
+  Rascunhos Econômicos · Quiz do curso Raio-X do Brasil
+</footer>
+
+<script>
+// ============================================================
+// PERGUNTAS — sem gabarito. A correção acontece em api/quiz.js.
+// A ordem aqui DEVE bater com o array GABARITO em api/quiz.js.
+// ============================================================
+const PERGUNTAS = [
+  { q: 'O que é o M2?', o: [
+    'Um índice de inflação',
+    'Um agregado monetário',
+    'Um indexador de contratos imobiliários',
+    'O segundo índice da Bolsa de Valores de Madrid' ] },
+  { q: 'Qual é a principal missão do canal Rascunhos Econômicos?', o: [
+    'Formação política e ideológica',
+    'Ensinar investimentos e indicar ações',
+    'Fazer previsões sobre o dólar',
+    'Divulgação científica de economia' ] },
+  { q: 'O que é a taxa Selic?', o: [
+    'A taxa básica de juros da economia brasileira',
+    'Um imposto cobrado sobre salários',
+    'A cotação oficial do dólar',
+    'A taxa que o YouTube cobra dos canais de economia' ] },
+  { q: 'O que o PIB procura medir?', o: [
+    'O patrimônio de todas as pessoas de um país',
+    'A quantidade de dinheiro guardada nos bancos',
+    'O valor dos bens e serviços finais produzidos em determinado período',
+    'A felicidade média dos ministros da Fazenda' ] },
+  { q: 'O que é inflação?', o: [
+    'Um aumento generalizado e persistente do nível de preços',
+    'Qualquer aumento no preço de um único produto',
+    'Uma queda temporária da Bolsa de Valores',
+    'O crescimento excessivo de balões em festas infantis' ] },
+  { q: 'O que significa dizer que um país teve superávit primário?', o: [
+    'O governo arrecadou mais do que gastou, desconsiderando os juros da dívida',
+    'O país exportou mais jogadores de futebol do que importou',
+    'O Banco Central imprimiu dinheiro com lucro',
+    'O governo terminou o ano sem nenhuma dívida' ] },
+  { q: 'Qual destas instituições é responsável pela política monetária no Brasil?', o: [
+    'Banco Central do Brasil',
+    'IBGE',
+    'Ministério da Cultura',
+    'Confederação Brasileira de Futebol' ] },
+  { q: 'O que normalmente acontece quando o real se desvaloriza em relação ao dólar?', o: [
+    'Os produtos importados tendem a ficar mais caros em reais',
+    'Todos os salários brasileiros aumentam automaticamente',
+    'A dívida pública desaparece',
+    'O dólar passa a valer menos dentro dos Estados Unidos' ] },
+  { q: 'O que são juros reais?', o: [
+    'Os juros existentes apenas em notas e moedas físicas',
+    'Os juros nominais descontado o efeito da inflação',
+    'Os juros autorizados pela família real',
+    'A diferença entre a Selic e o preço do dólar' ] },
+  { q: 'O que é um imposto progressivo?', o: [
+    'Um imposto cuja alíquota tende a aumentar conforme cresce a renda ou a base tributável',
+    'Um imposto que aumenta um pouco todos os dias',
+    'Um imposto destinado exclusivamente a financiar o progresso tecnológico',
+    'Um imposto pago apenas por pessoas progressistas' ] },
+  { q: 'Quando alguém compra uma ação, o que essa pessoa adquire?', o: [
+    'Uma participação em uma empresa',
+    'Um título de dívida emitido obrigatoriamente pelo Banco Central',
+    'Uma promessa de receber juros fixos todos os meses',
+    'O direito de mandar diretamente no presidente da empresa' ] },
+  { q: 'Qual é a principal diferença entre economia e finanças?', o: [
+    'Não existe diferença alguma',
+    'Economia estuda apenas governos, enquanto finanças estuda apenas pessoas',
+    'Finanças é uma área relacionada à gestão de recursos e ativos, enquanto a economia estuda fenômenos muito mais amplos',
+    'Economia usa calculadora, enquanto finanças usa planilha' ] },
+  { q: 'O que é a dívida pública?', o: [
+    'O conjunto de obrigações financeiras assumidas pelo governo',
+    'A soma de todas as dívidas das famílias brasileiras',
+    'O dinheiro que o governo deve exclusivamente ao FMI',
+    'Uma conta secreta dividida igualmente entre todos os políticos' ] },
+  { q: 'O que o curso Raio-X do Brasil procura fazer?', o: [
+    'Ensinar operações de day trade',
+    'Explicar de maneira estruturada os principais problemas e mecanismos da economia brasileira',
+    'Preparar o aluno para prever o resultado das próximas eleições',
+    'Revelar quais ações vão subir no mês seguinte' ] },
+  { q: 'Qual destas afirmações combina melhor com a proposta do Rascunhos Econômicos?', o: [
+    'Economia é apenas uma questão de opinião',
+    'Toda pergunta econômica possui uma resposta simples e universal',
+    'Basta decorar alguns slogans para entender o Brasil',
+    'Economia exige conceitos, evidências e análise das circunstâncias concretas' ] },
+];
+
+const state = {
+  email: '',
+  comprou: null,      // true | false
+  nome: '',
+  telefone: '',
+  respostas: new Array(PERGUNTAS.length).fill(null),
+  idx: 0,             // pergunta atual
+};
+
+const card = document.getElementById('card');
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const emailValido = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
+const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
+
+// ---------------- TELA: e-mail ----------------
+function renderEmail() {
+  card.innerHTML = `
+    <div class="screen">
+      <span class="eyebrow">Quiz · Raio-X do Brasil</span>
+      <h1 class="title">Você merece um <span class="accent">desconto</span> no curso Raio-X do Brasil?</h1>
+      <p class="lead">São <strong>15 perguntas rápidas</strong> de economia. No final, você recebe um cupom de desconto de acordo com os seus acertos. Comece informando seu e-mail.</p>
+      <div class="field stacked">
+        <input type="email" id="in-email" placeholder="Digite seu melhor e-mail" autocomplete="email" value="${esc(state.email)}">
+      </div>
+      <div class="err" id="err"></div>
+      <div class="actions">
+        <button class="btn-primary" id="btn-next">Começar o quiz ${arrow}</button>
+      </div>
+      <div class="microcopy">
+        <span>1 tentativa por e-mail</span>
+        <span>Leva menos de 3 minutos</span>
+      </div>
+    </div>`;
+  const input = document.getElementById('in-email');
+  const err = document.getElementById('err');
+  const btn = document.getElementById('btn-next');
+  input.focus();
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') btn.click(); });
+
+  btn.addEventListener('click', async () => {
+    const email = input.value.trim().toLowerCase();
+    if (!emailValido(email)) { err.textContent = 'Digite um e-mail válido.'; input.focus(); return; }
+    state.email = email;
+    err.textContent = '';
+    setLoading(btn, true, 'Verificando...');
+    try {
+      const r = await api({ action: 'check', email });
+      if (r.jaRespondeu) { renderResult(r, true); return; }
+      renderComprou();
+    } catch (e) {
+      setLoading(btn, false);
+      err.textContent = 'Não foi possível continuar agora. Tente novamente em instantes.';
+    }
+  });
+}
+
+// ---------------- TELA: já comprou? ----------------
+function renderComprou() {
+  card.innerHTML = `
+    <div class="screen">
+      <span class="eyebrow">Antes de começar</span>
+      <h1 class="title">Você já <span class="accent">comprou</span> o curso Raio-X do Brasil?</h1>
+      <p class="lead">Isso define o que você recebe no final: um cupom de desconto para comprar o curso, ou acesso à masterclass futura para quem já é aluno.</p>
+      <div class="choice-grid">
+        <button class="choice" data-v="nao">
+          <div class="choice-ico">🎟️</div>
+          <h3>Ainda não comprei</h3>
+          <p>Quero fazer o quiz e ganhar um cupom de desconto.</p>
+        </button>
+        <button class="choice" data-v="sim">
+          <div class="choice-ico">🎓</div>
+          <h3>Já sou aluno</h3>
+          <p>Já comprei o curso e quero garantir acesso à masterclass futura.</p>
+        </button>
+      </div>
+      <div id="buyer" class="hidden">
+        <div class="field stacked"><input type="text" id="in-nome" placeholder="Seu nome completo" autocomplete="name"></div>
+        <div class="field stacked"><input type="tel" id="in-tel" placeholder="Seu telefone (WhatsApp)" autocomplete="tel"></div>
+      </div>
+      <div class="err" id="err"></div>
+      <div class="actions">
+        <button class="btn-ghost" id="btn-back">← Voltar</button>
+        <button class="btn-primary" id="btn-next" disabled>Ir para as perguntas ${arrow}</button>
+      </div>
+    </div>`;
+
+  const buyer = document.getElementById('buyer');
+  const btnNext = document.getElementById('btn-next');
+  const err = document.getElementById('err');
+  const choices = card.querySelectorAll('.choice');
+
+  choices.forEach(ch => ch.addEventListener('click', () => {
+    choices.forEach(c => c.classList.remove('selected'));
+    ch.classList.add('selected');
+    state.comprou = ch.dataset.v === 'sim';
+    buyer.classList.toggle('hidden', !state.comprou);
+    btnNext.disabled = false;
+  }));
+
+  document.getElementById('btn-back').addEventListener('click', renderEmail);
+
+  btnNext.addEventListener('click', () => {
+    if (state.comprou) {
+      const nome = document.getElementById('in-nome').value.trim();
+      const tel = document.getElementById('in-tel').value.trim();
+      if (nome.length < 2) { err.textContent = 'Informe seu nome completo.'; return; }
+      if (tel.replace(/\D/g, '').length < 10) { err.textContent = 'Informe um telefone válido com DDD.'; return; }
+      state.nome = nome; state.telefone = tel;
+    }
+    err.textContent = '';
+    state.idx = 0;
+    renderPergunta();
+  });
+}
+
+// ---------------- TELA: pergunta ----------------
+function renderPergunta() {
+  const i = state.idx;
+  const p = PERGUNTAS[i];
+  const pct = Math.round((i / PERGUNTAS.length) * 100);
+  const letras = ['A', 'B', 'C', 'D'];
+  card.innerHTML = `
+    <div class="screen">
+      <div class="progress">
+        <div class="progress-meta"><span>Pergunta <strong>${i + 1}</strong> de ${PERGUNTAS.length}</span><span>${pct}%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>
+      <h2 class="q-text">${esc(p.q)}</h2>
+      <div class="options">
+        ${p.o.map((op, k) => `
+          <button class="option${state.respostas[i] === k ? ' selected' : ''}" data-k="${k}">
+            <span class="option-key">${letras[k]}</span>
+            <span>${esc(op)}</span>
+          </button>`).join('')}
+      </div>
+      <div class="err" id="err"></div>
+      <div class="actions">
+        ${i > 0 ? '<button class="btn-ghost" id="btn-back">← Anterior</button>' : ''}
+        <button class="btn-primary" id="btn-next" ${state.respostas[i] === null ? 'disabled' : ''}>
+          ${i === PERGUNTAS.length - 1 ? 'Ver meu resultado' : 'Próxima'} ${arrow}
+        </button>
+      </div>
+    </div>`;
+
+  const btnNext = document.getElementById('btn-next');
+  card.querySelectorAll('.option').forEach(opt => opt.addEventListener('click', () => {
+    card.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    state.respostas[i] = parseInt(opt.dataset.k, 10);
+    btnNext.disabled = false;
+  }));
+
+  const back = document.getElementById('btn-back');
+  if (back) back.addEventListener('click', () => { state.idx--; renderPergunta(); });
+
+  btnNext.addEventListener('click', () => {
+    if (state.respostas[i] === null) return;
+    if (i < PERGUNTAS.length - 1) { state.idx++; renderPergunta(); }
+    else finalizar();
+  });
+}
+
+// ---------------- Envio final ----------------
+async function finalizar() {
+  const btn = document.getElementById('btn-next');
+  const err = document.getElementById('err');
+  setLoading(btn, true, 'Calculando...');
+  try {
+    const payload = {
+      action: 'submit',
+      email: state.email,
+      comprou: state.comprou,
+      respostas: state.respostas,
+    };
+    if (state.comprou) { payload.nome = state.nome; payload.telefone = state.telefone; }
+    const r = await api(payload);
+    renderResult(r, r.jaRespondeu === true);
+  } catch (e) {
+    setLoading(btn, false);
+    if (err) err.textContent = 'Não foi possível enviar suas respostas. Tente novamente.';
+  }
+}
+
+// ---------------- TELA: resultado ----------------
+function renderResult(r, jaTinha) {
+  const acertos = r.acertos, total = r.total || PERGUNTAS.length;
+  const comprou = r.comprou;
+  const jaMsg = jaTinha
+    ? '<div class="result-card"><h3>Você já tinha feito o quiz</h3><p>Cada e-mail responde uma única vez. Este é o resultado que ficou registrado para você.</p></div>'
+    : '';
+
+  let bloco;
+  if (comprou) {
+    bloco = `
+      <div class="result-card">
+        <h3>🎓 Sua vaga na masterclass está registrada</h3>
+        <p>Você declarou já ser aluno do curso. Guardamos seu nome e contato — você será avisado por e-mail quando a próxima masterclass for liberada.</p>
+      </div>`;
+  } else {
+    bloco = `
+      <div class="coupon">
+        <div class="coupon-label">Seu cupom de desconto</div>
+        <div class="coupon-code">
+          <span id="code">${esc(r.cupom || '—')}</span>
+          <button class="copy-btn" id="copy">Copiar</button>
+        </div>
+        <div class="coupon-note">Use este código no checkout do curso na Hotmart. Válido por tempo limitado.</div>
+      </div>
+      <a class="btn-primary" style="margin-top:22px;text-decoration:none;" href="https://www.rascunhoseconomicos.com.br" target="_blank" rel="noopener">Ir comprar o curso com desconto ${arrow}</a>`;
+  }
+
+  card.innerHTML = `
+    <div class="screen" style="text-align:center;">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="result-badge">Quiz concluído</div>
+        <div class="score-ring">${acertos}<span>/${total}</span></div>
+        <p class="lead" style="margin-top:16px;">Você acertou <strong>${acertos} de ${total}</strong> perguntas.</p>
+      </div>
+      ${jaMsg}
+      <div style="text-align:left;">${bloco}</div>
+    </div>`;
+
+  const copy = document.getElementById('copy');
+  if (copy) copy.addEventListener('click', () => {
+    const code = document.getElementById('code').textContent;
+    navigator.clipboard?.writeText(code).then(() => {
+      copy.textContent = 'Copiado ✓';
+      setTimeout(() => copy.textContent = 'Copiar', 1800);
+    });
+  });
+}
+
+// ---------------- utils ----------------
+async function api(payload) {
+  const resp = await fetch('/api/quiz', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const data = await resp.json().catch(() => ({}));
+  if (!resp.ok || !data.ok) throw new Error(data.error || 'failed');
+  return data;
+}
+function setLoading(btn, loading, label) {
+  if (!btn) return;
+  if (loading) {
+    btn.dataset.html = btn.innerHTML;
+    btn.disabled = true; btn.style.opacity = '0.7'; btn.style.cursor = 'wait';
+    btn.textContent = label || 'Enviando...';
+  } else {
+    btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = '';
+    if (btn.dataset.html) btn.innerHTML = btn.dataset.html;
+  }
+}
+
+renderEmail();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+.DS_Store
+*.log
+.vscode/
+.idea/
+node_modules/
+
+# secrets / local env
+.env
+.env*.local
+
+# vercel
+.vercel
