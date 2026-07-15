@@ -177,22 +177,20 @@ module.exports = async (req, res) => {
         concluido_em: new Date().toISOString(),
       };
 
-      const insert = await fetch(
-        `${SUPABASE_URL}/rest/v1/quiz_respostas?on_conflict=email`,
-        {
-          method: 'POST',
-          headers: {
-            ...sbHeaders(SUPABASE_KEY),
-            Prefer: 'resolution=merge-duplicates,return=representation',
-          },
-          body: JSON.stringify(registro),
-        }
-      );
+      const insertUrl = `${SUPABASE_URL}/rest/v1/quiz_respostas?on_conflict=email`;
+      const insert = await fetch(insertUrl, {
+        method: 'POST',
+        headers: {
+          ...sbHeaders(SUPABASE_KEY),
+          Prefer: 'resolution=merge-duplicates,return=representation',
+        },
+        body: JSON.stringify(registro),
+      });
 
       if (!insert.ok) {
         const detail = await insert.text().catch(() => '');
-        console.error('supabase insert failed', insert.status, detail);
-        res.status(502).json({ ok: false, error: 'db_error', status: insert.status, detail: detail.slice(0, 400) });
+        console.error('supabase insert failed', insert.status, insertUrl, detail);
+        res.status(502).json({ ok: false, error: 'db_error', status: insert.status, detail: detail.slice(0, 400), url: insertUrl });
         return;
       }
 
