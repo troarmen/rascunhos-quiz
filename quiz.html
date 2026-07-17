@@ -504,23 +504,23 @@ const PERGUNTAS = [
   { q: 'O que é o M2?', o: [
     'Um índice de inflação',
     'Um agregado monetário',
-    'Um indexador de contratos imobiliários',
-    'O segundo índice da Bolsa de Valores de Madrid' ] },
+    'Base monetária',
+    'True supply money, mostrando os depósitos a vista e a prazo' ] },
   { q: 'Qual é a principal missão do canal Rascunhos Econômicos?', o: [
     'Formação política e ideológica',
     'Ensinar investimentos e indicar ações',
     'Fazer previsões sobre o dólar',
     'Divulgação científica de economia' ] },
-  { q: 'O que é a taxa Selic?', o: [
-    'A taxa básica de juros da economia brasileira',
-    'Um imposto cobrado sobre salários',
-    'A cotação oficial do dólar',
-    'A taxa que o YouTube cobra dos canais de economia' ] },
-  { q: 'O que o PIB procura medir?', o: [
-    'O patrimônio de todas as pessoas de um país',
-    'A quantidade de dinheiro guardada nos bancos',
-    'O valor dos bens e serviços finais produzidos em determinado período',
-    'A felicidade média dos ministros da Fazenda' ] },
+  { q: 'Qual alternativa define mais precisamente a taxa Selic?', o: [
+    'A taxa média das operações de financiamento de um dia, lastreadas em títulos públicos federais, que serve de referência para a política monetária brasileira.',
+    'A taxa média dos títulos públicos federais de longo prazo negociados no mercado secundário.',
+    'A taxa utilizada pelo Banco Central para fixar diretamente a cotação diária do dólar.',
+    'A taxa obrigatoriamente aplicada a todos os empréstimos concedidos pelos bancos comerciais.' ] },
+  { q: 'O que o Produto Interno Bruto procura medir?', o: [
+    'O valor total dos ativos financeiros e reais pertencentes aos residentes de um país em determinada data.',
+    'A soma de todas as transações realizadas na economia, incluindo bens intermediários e ativos usados.',
+    'O valor de mercado dos bens e serviços finais produzidos dentro de um território durante determinado período.',
+    'A renda acumulada pelos cidadãos do país, inclusive aquela gerada no exterior, descontada a de estrangeiros no território nacional.' ] },
   { q: 'O que é inflação?', o: [
     'Um aumento generalizado e persistente do nível de preços',
     'Qualquer aumento no preço de um único produto',
@@ -531,16 +531,16 @@ const PERGUNTAS = [
     'O país exportou mais jogadores de futebol do que importou',
     'O Banco Central imprimiu dinheiro com lucro',
     'O governo terminou o ano sem nenhuma dívida' ] },
-  { q: 'Qual destas instituições é responsável pela política monetária no Brasil?', o: [
-    'Banco Central do Brasil',
-    'IBGE',
-    'Ministério da Cultura',
-    'Confederação Brasileira de Futebol' ] },
-  { q: 'O que normalmente acontece quando o real se desvaloriza em relação ao dólar?', o: [
-    'Os produtos importados tendem a ficar mais caros em reais',
-    'Todos os salários brasileiros aumentam automaticamente',
-    'A dívida pública desaparece',
-    'O dólar passa a valer menos dentro dos Estados Unidos' ] },
+  { q: 'No regime brasileiro de metas para a inflação, qual alternativa descreve corretamente a divisão de competências entre as instituições responsáveis pela política monetária?', o: [
+    'O Conselho Monetário Nacional fixa a meta de inflação; o Copom define a meta para a taxa Selic; e o Banco Central executa as operações necessárias para conduzir os juros de mercado em direção à meta estabelecida.',
+    'O Banco Central fixa sozinho a meta de inflação; o Conselho Monetário Nacional define a taxa Selic; e o Tesouro Nacional executa as operações de política monetária.',
+    'O Copom fixa a meta de inflação e a taxa de câmbio; o Banco Central calcula o IPCA; e o Conselho Monetário Nacional administra a dívida pública.',
+    'O Ministério da Fazenda fixa a taxa Selic; o Copom determina o resultado primário; e o Banco Central estabelece as alíquotas dos tributos federais.' ] },
+  { q: 'Mantidas as demais condições constantes, qual é o efeito mais imediato de uma desvalorização do real em relação ao dólar?', o: [
+    'Bens importados e insumos cotados em dólar tendem a ficar mais caros em reais, embora o repasse aos preços internos possa ser parcial e gradual.',
+    'As exportações brasileiras necessariamente diminuem, pois os produtos nacionais passam a custar mais para os compradores estrangeiros.',
+    'O nível geral de preços aumenta imediatamente na mesma proporção da desvalorização cambial.',
+    'O Banco Central é obrigado a elevar a taxa Selic na mesma proporção da alta do dólar.' ] },
   { q: 'O que são juros reais?', o: [
     'Os juros existentes apenas em notas e moedas físicas',
     'Os juros nominais descontado o efeito da inflação',
@@ -561,21 +561,21 @@ const PERGUNTAS = [
     'Economia estuda apenas governos, enquanto finanças estuda apenas pessoas',
     'Finanças é uma área relacionada à gestão de recursos e ativos, enquanto a economia estuda fenômenos muito mais amplos',
     'Economia usa calculadora, enquanto finanças usa planilha' ] },
-  { q: 'O que é a dívida pública?', o: [
-    'O conjunto de obrigações financeiras assumidas pelo governo',
-    'A soma de todas as dívidas das famílias brasileiras',
-    'O dinheiro que o governo deve exclusivamente ao FMI',
-    'Uma conta secreta dividida igualmente entre todos os políticos' ] },
+  { q: 'Qual alternativa define corretamente a dívida pública e a distingue do déficit público?', o: [
+    'A dívida pública é o estoque de obrigações financeiras acumuladas pelo governo em determinada data, enquanto o déficit é o fluxo resultante da diferença entre receitas e despesas durante um período.',
+    'A dívida pública corresponde exclusivamente ao déficit primário registrado pelo governo no ano corrente.',
+    'A dívida pública é formada apenas pelos títulos do governo pertencentes a investidores estrangeiros e organismos internacionais.',
+    'A dívida pública representa a soma de todas as despesas futuras autorizadas no orçamento, mesmo que ainda não tenham sido executadas ou financiadas.' ] },
   { q: 'O que o curso Raio-X do Brasil procura fazer?', o: [
     'Ensinar operações de day trade',
     'Explicar de maneira estruturada os principais problemas e mecanismos da economia brasileira',
     'Preparar o aluno para prever o resultado das próximas eleições',
     'Revelar quais ações vão subir no mês seguinte' ] },
-  { q: 'Qual destas afirmações combina melhor com a proposta do Rascunhos Econômicos?', o: [
-    'Economia é apenas uma questão de opinião',
-    'Toda pergunta econômica possui uma resposta simples e universal',
-    'Basta decorar alguns slogans para entender o Brasil',
-    'Economia exige conceitos, evidências e análise das circunstâncias concretas' ] },
+  { q: 'Quem publicou, em 1937, o artigo que apresentou o diagrama posteriormente conhecido como modelo IS–LM?', o: [
+    'Roy Harrod',
+    'James Meade',
+    'Alvin Hansen',
+    'John R. Hicks' ] },
 ];
 
 const state = {
@@ -777,17 +777,24 @@ function renderResult(r, jaTinha) {
         <h3>🎓 Sua vaga na masterclass está registrada</h3>
         <p>Você declarou já ser aluno do curso. Guardamos seu nome e contato — você será avisado por e-mail quando a próxima masterclass for liberada.</p>
       </div>`;
-  } else {
+  } else if (r.cupom) {
     bloco = `
       <div class="coupon">
         <div class="coupon-label">Seu cupom de desconto</div>
         <div class="coupon-code">
-          <span id="code">${esc(r.cupom || '—')}</span>
+          <span id="code">${esc(r.cupom)}</span>
           <button class="copy-btn" id="copy">Copiar</button>
         </div>
         <div class="coupon-note">Use este código no checkout do curso na Hotmart. Válido por tempo limitado.</div>
       </div>
       <a class="btn-primary" style="margin-top:22px;text-decoration:none;" href="https://pay.hotmart.com/P106026562S?bid=1784220204891" target="_blank" rel="noopener">Ir comprar o curso com desconto ${arrow}</a>`;
+  } else {
+    bloco = `
+      <div class="result-card">
+        <h3>Você não atingiu a pontuação para um cupom do quiz</h3>
+        <p>Foram menos de 60% de acertos, então desta vez não liberamos um cupom exclusivo aqui. Mas você ainda pode garantir <strong>50% de desconto</strong> pegando o cupom na página oficial do curso.</p>
+      </div>
+      <a class="btn-primary" style="margin-top:8px;text-decoration:none;" href="https://rascunhoseconomicos.com" target="_blank" rel="noopener">Pegar meu cupom de 50% no site oficial ${arrow}</a>`;
   }
 
   card.innerHTML = `

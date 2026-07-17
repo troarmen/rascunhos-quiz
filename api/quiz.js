@@ -17,16 +17,17 @@
 
 // GABARITO — índice da alternativa correta (0=A, 1=B, 2=C, 3=D).
 // A ordem bate com o array PERGUNTAS em quiz.html.
-const GABARITO = [1, 3, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 3];
+const GABARITO = [1, 3, 0, 2, 0, 0, 0, 0, 1, 0, 0, 2, 0, 1, 3];
 const TOTAL = GABARITO.length; // 15
 
 // Cupons por faixa de acerto. Avaliado de cima para baixo:
 // a primeira faixa cujo "min" o aluno alcançar, vence.
-// A última (min: 0) garante que todo mundo receba um cupom.
+// Quem acerta menos de 9 (< 60%) NÃO recebe cupom (cupom = null) —
+// o front mostra a mensagem com o cupom de 50% do site oficial.
 const CUPONS = [
-  { min: 12, cupom: 'QUIZ80' }, // >= 80% de acerto
-  { min: 9,  cupom: 'QUIZ70' }, // 60% a 79%
-  { min: 0,  cupom: 'QUIZ60' }, // piso: qualquer pontuação
+  { min: 12, cupom: 'QUIZ80X' },    // >= 80% de acerto (12 a 15)
+  { min: 11, cupom: 'QUIZ70H2' },   // 70% a 80% (11)
+  { min: 9,  cupom: 'QUIZDESC60' }, // 60% a 70% (9 e 10)
 ];
 
 // ---------- helpers Supabase (REST) ----------
